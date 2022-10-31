@@ -7,5 +7,20 @@ class Author
   
   end
 
-
+  def articles
+    Article.all.select{|article|article.author == @name}
+  end
+  
+  def magazines
+    articles.collect{|article|article.magazine}.uniq 
+  end
+  
+  def add_article (magazine, title)
+    Article.new(self, magazine, title)
+  end
+  
+  def topic_areas
+    magazines.collect{|magazine|magazine.
+      category}.uniq
+  end
 end
